@@ -46,8 +46,7 @@ This project is an Instagram Stories clone built with React, Redux, and Apollo C
 
 3. Create an `.env` file in the backend directory and add your environment variables:
    ```env
-   DATABASE_URL=your_database_url
-   JWT_SECRET=your_jwt_secret
+   PORT=8000
    ```
 
 4. Run the backend server:
