@@ -16,12 +16,15 @@ const express_1 = __importDefault(require("express"));
 const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
 const mocks_1 = require("./mocks");
+const cors_1 = __importDefault(require("cors"));
 const typedUsers = mocks_1.users;
 const typedStories = mocks_1.stories;
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3000;
 function startApolloServer() {
     return __awaiter(this, void 0, void 0, function* () {
+        app.use(express_1.default.json());
+        app.use((0, cors_1.default)());
         const server = new server_1.ApolloServer({
             typeDefs: `
       type Story {
@@ -75,7 +78,6 @@ function startApolloServer() {
             },
         });
         yield server.start();
-        app.use(express_1.default.json());
         app.use("/graphql", (0, express4_1.expressMiddleware)(server));
         app.listen(port, () => {
             console.log("Server is running on port ", port);

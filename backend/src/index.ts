@@ -2,6 +2,7 @@ import express from "express";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { users, stories } from "./mocks";
+import cors from "cors";
 
 interface User {
   img: string;
@@ -28,6 +29,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 async function startApolloServer() {
+  app.use(express.json());
+  app.use(cors());
+
   const server = new ApolloServer({
     typeDefs: `
       type Story {
@@ -86,7 +90,7 @@ async function startApolloServer() {
   });
 
   await server.start();
-  app.use(express.json());
+
   app.use("/graphql", expressMiddleware(server));
 
   app.listen(port, () => {

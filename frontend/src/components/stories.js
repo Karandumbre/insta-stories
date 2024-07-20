@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import Story from "./story";
 import "./story.css";
-import { data as initialData } from "constants/data";
 import StoryModal from "./story-modal";
+import { useSelector } from "react-redux";
 
 function Stories() {
+  const { users: initialData } = useSelector((state) => state.user);
+
   const [storyModal, setStoryModal] = useState(false);
   const [storyData, setStoryData] = useState({ stories: [] });
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+
+  useEffect(() => {
+    setData(initialData);
+  }, [initialData]);
 
   const onStoryClick = (userId) => {
     setStoryModal(true);

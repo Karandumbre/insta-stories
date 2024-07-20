@@ -39,6 +39,7 @@
 .story-container .content:hover {
   transform: scale(1.1);
 }
+
 .story-container .content .img-container {
   display: inline-block;
   width: 5rem;
@@ -47,6 +48,10 @@
   background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 60%, transparent 60%),
     radial-gradient(circle, white 65%, transparent 65%),
     linear-gradient(to top right, orange, deeppink);
+}
+
+.story-container .content .viewed-story {
+  background: none;
 }
 
 .story-container .content .img-container img {
