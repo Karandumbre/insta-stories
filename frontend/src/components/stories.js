@@ -35,6 +35,26 @@ function Stories() {
     }
   };
 
+  const handlePrevUser = () => {
+    const currentIndex = data.findIndex(
+      (item) => item.userId === storyData.userId
+    );
+    if (currentIndex > 0) {
+      const prevUser = data
+        .slice(0, currentIndex)
+        .reverse()
+        .find((item) => item.stories.some((story) => !story.viewed));
+      if (prevUser) {
+        setStoryData(prevUser);
+        setStoryModal(true);
+      } else {
+        setStoryModal(false);
+      }
+    } else {
+      setStoryModal(false);
+    }
+  };
+
   const handleClose = () => {
     setStoryModal(false);
     const sortedData = [...data].sort((a, b) => {
@@ -68,6 +88,7 @@ function Stories() {
         onNextUser={handleNextUser}
         setCurrentStoryIndex={setCurrentStoryIndex}
         currentStoryIndex={currentStoryIndex}
+        onPrevUser={handlePrevUser}
       />
     </div>
   );

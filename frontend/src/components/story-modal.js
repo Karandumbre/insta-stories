@@ -8,6 +8,7 @@ export default function StoryModal({
   onClose,
   data,
   onNextUser,
+  onPrevUser,
   setCurrentStoryIndex,
   currentStoryIndex,
 }) {
@@ -49,15 +50,34 @@ export default function StoryModal({
     if (progress === 100) {
       setProgress(0);
       if (currentStoryIndex < stories.length - 1) {
-        setCurrentStoryIndex((prevIndex) => {
-          return prevIndex + 1;
-        });
+        setCurrentStoryIndex((prevIndex) => prevIndex + 1);
       } else {
         setCurrentStoryIndex(0);
         onNextUser();
       }
     }
   }, [progress, currentStoryIndex, stories.length, onNextUser]);
+
+  const handleNext = () => {
+    setProgress(0);
+    if (currentStoryIndex < stories.length - 1) {
+      setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setCurrentStoryIndex(0);
+      onNextUser();
+    }
+  };
+
+  const handlePrev = () => {
+    setProgress(0);
+    if (currentStoryIndex > 0) {
+      setCurrentStoryIndex((prevIndex) => prevIndex - 1);
+    }
+    if (currentStoryIndex === 0) {
+      setCurrentStoryIndex(0);
+      onPrevUser();
+    }
+  };
 
   return (
     <Dialog
@@ -101,12 +121,25 @@ export default function StoryModal({
           />
         ))}
       </Box>
-      <Box height="inherit">
+      <Box
+        height="inherit"
+        display="flex"
+        onClick={(e) => {
+          const clickX = e.clientX;
+          const width = e.currentTarget.clientWidth;
+          if (clickX > width / 2) {
+            handleNext();
+          } else {
+            handlePrev();
+          }
+        }}
+      >
         <img
           src={stories[currentStoryIndex]?.img}
           alt="story"
           height="100%"
           width="100%"
+          style={{ cursor: "pointer" }}
         />
       </Box>
     </Dialog>

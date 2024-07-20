@@ -30,7 +30,7 @@ export const data = [
     userId: "654321",
     stories: [
       {
-        img: "https://images.unsplash.com/photo-1503467576755-9e6aee7b1a1e",
+        img: "https://cdn.pixabay.com/photo/2016/03/30/08/24/peacock-1290248_1280.jpg",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -114,7 +114,7 @@ export const data = [
         caption: "Mountaintop views",
       },
       {
-        img: "https://cdn.pixabay.com/photo/2016/11/29/09/32/adventure-1867093_960_720.jpg",
+        img: "https://cdn.pixabay.com/photo/2023/09/28/21/22/highland-cattle-8282564_1280.jpg",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -130,7 +130,7 @@ export const data = [
     userId: "789123",
     stories: [
       {
-        img: "https://cdn.pixabay.com/photo/2015/03/26/09/54/camping-690233_960_720.jpg",
+        img: "https://plus.unsplash.com/premium_photo-1686779700540-9537b63e1a8f",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -139,7 +139,7 @@ export const data = [
         caption: "Hiking adventures",
       },
       {
-        img: "https://cdn.pixabay.com/photo/2016/11/21/12/47/book-1845613_960_720.jpg",
+        img: "https://plus.unsplash.com/premium_photo-1701192455496-a095e6e5f792",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -155,7 +155,7 @@ export const data = [
     userId: "456123",
     stories: [
       {
-        img: "https://cdn.pixabay.com/photo/2016/02/19/11/19/travel-1208302_960_720.jpg",
+        img: "https://images.unsplash.com/photo-1719937206491-ed673f64be1f",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -164,7 +164,7 @@ export const data = [
         caption: "Forest trails",
       },
       {
-        img: "https://cdn.pixabay.com/photo/2015/11/07/11/47/trees-1030967_960_720.jpg",
+        img: "https://images.unsplash.com/photo-1721297014355-bea6467bb1c9",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -180,7 +180,7 @@ export const data = [
     userId: "987321",
     stories: [
       {
-        img: "https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg",
+        img: "https://images.unsplash.com/photo-1721150641805-23a37065c116",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
@@ -189,7 +189,7 @@ export const data = [
         caption: "Mountain escape",
       },
       {
-        img: "https://cdn.pixabay.com/photo/2015/07/27/18/13/fox-863801_960_720.jpg",
+        img: "https://plus.unsplash.com/premium_photo-1706800175843-795bc59419e6",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
