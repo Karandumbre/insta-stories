@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import Story from "./story";
 import "./story.css";
-import { data as initialData } from "constants/data";
 import StoryModal from "./story-modal";
+import { useSelector } from "react-redux";
 
 function Stories() {
+  const { users: initialData } = useSelector((state) => state.user);
+
   const [storyModal, setStoryModal] = useState(false);
   const [storyData, setStoryData] = useState({ stories: [] });
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState([]);
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
+
+  useEffect(() => {
+    setData(initialData);
+  }, [initialData]);
 
   const onStoryClick = (userId) => {
     setStoryModal(true);
@@ -26,6 +32,26 @@ function Stories() {
         .find((item) => item.stories.some((story) => !story.viewed));
       if (nextUser) {
         setStoryData(nextUser);
+        setStoryModal(true);
+      } else {
+        setStoryModal(false);
+      }
+    } else {
+      setStoryModal(false);
+    }
+  };
+
+  const handlePrevUser = () => {
+    const currentIndex = data.findIndex(
+      (item) => item.userId === storyData.userId
+    );
+    if (currentIndex > 0) {
+      const prevUser = data
+        .slice(0, currentIndex)
+        .reverse()
+        .find((item) => item.stories.some((story) => !story.viewed));
+      if (prevUser) {
+        setStoryData(prevUser);
         setStoryModal(true);
       } else {
         setStoryModal(false);
@@ -68,6 +94,7 @@ function Stories() {
         onNextUser={handleNextUser}
         setCurrentStoryIndex={setCurrentStoryIndex}
         currentStoryIndex={currentStoryIndex}
+        onPrevUser={handlePrevUser}
       />
     </div>
   );

@@ -2,18 +2,51 @@ import React, { useEffect, useState, useRef } from "react";
 import { Dialog } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { Box, LinearProgress } from "@mui/material";
+import { useMutation } from "@apollo/client";
+import { VIEW_STORY_MUTATION } from "constants/query";
+import { updateUserStoryViewedState } from "store/userSlice";
+import { useDispatch } from "react-redux";
 
 export default function StoryModal({
   open,
   onClose,
   data,
   onNextUser,
+  onPrevUser,
   setCurrentStoryIndex,
   currentStoryIndex,
 }) {
+  const dispatch = useDispatch();
+  const [viewStory] = useMutation(VIEW_STORY_MUTATION);
+
+  const handleViewStory = async (storyId) => {
+    try {
+      const response = await viewStory({ variables: { storyId } });
+      const storyData = response.data.viewStory;
+      dispatch(
+        updateUserStoryViewedState({
+          userId: data.userId,
+          storyId: storyData.storyId,
+          viewed: storyData.viewed,
+          viewedAt: storyData.viewedAt,
+        })
+      );
+    } catch {
+      console.error("Error viewing story");
+    }
+  };
+
   const [progress, setProgress] = useState(0);
   const { stories } = data;
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    const currentStory = stories[currentStoryIndex];
+
+    if (currentStory && !currentStory.viewed) {
+      handleViewStory(currentStory.id);
+    }
+  }, [stories[currentStoryIndex]]);
 
   const clearTimer = () => {
     clearInterval(timerRef.current);
@@ -49,15 +82,34 @@ export default function StoryModal({
     if (progress === 100) {
       setProgress(0);
       if (currentStoryIndex < stories.length - 1) {
-        setCurrentStoryIndex((prevIndex) => {
-          return prevIndex + 1;
-        });
+        setCurrentStoryIndex((prevIndex) => prevIndex + 1);
       } else {
         setCurrentStoryIndex(0);
         onNextUser();
       }
     }
   }, [progress, currentStoryIndex, stories.length, onNextUser]);
+
+  const handleNext = () => {
+    setProgress(0);
+    if (currentStoryIndex < stories.length - 1) {
+      setCurrentStoryIndex((prevIndex) => prevIndex + 1);
+    } else {
+      setCurrentStoryIndex(0);
+      onNextUser();
+    }
+  };
+
+  const handlePrev = () => {
+    setProgress(0);
+    if (currentStoryIndex > 0) {
+      setCurrentStoryIndex((prevIndex) => prevIndex - 1);
+    }
+    if (currentStoryIndex === 0) {
+      setCurrentStoryIndex(0);
+      onPrevUser();
+    }
+  };
 
   return (
     <Dialog
@@ -101,12 +153,25 @@ export default function StoryModal({
           />
         ))}
       </Box>
-      <Box height="inherit">
+      <Box
+        height="inherit"
+        display="flex"
+        onClick={(e) => {
+          const clickX = e.clientX;
+          const width = e.currentTarget.clientWidth;
+          if (clickX > width / 2) {
+            handleNext();
+          } else {
+            handlePrev();
+          }
+        }}
+      >
         <img
           src={stories[currentStoryIndex]?.img}
           alt="story"
           height="100%"
           width="100%"
+          style={{ cursor: "pointer" }}
         />
       </Box>
     </Dialog>

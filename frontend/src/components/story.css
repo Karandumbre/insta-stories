@@ -1,18 +1,28 @@
 .container {
-  overflow-x: auto;
+  overflow: scroll hidden;
   overscroll-behavior-x: contain;
   border: 1px solid rgb(204, 204, 204);
   background-color: white;
-  padding: 2rem;
-  width: 98%;
+  padding: 0.5rem;
   margin: 0 auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.container {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .story-container {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 5rem;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 .story-container .content {
@@ -29,6 +39,7 @@
 .story-container .content:hover {
   transform: scale(1.1);
 }
+
 .story-container .content .img-container {
   display: inline-block;
   width: 5rem;
@@ -37,6 +48,10 @@
   background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 60%, transparent 60%),
     radial-gradient(circle, white 65%, transparent 65%),
     linear-gradient(to top right, orange, deeppink);
+}
+
+.story-container .content .viewed-story {
+  background: none;
 }
 
 .story-container .content .img-container img {

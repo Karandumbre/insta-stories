@@ -1,10 +1,52 @@
-export const data = [
-  {
-    img: "https://randomuser.me/api/portraits/women/1.jpg",
-    name: "John Doe",
-    userId: "123456",
-    stories: [
-      {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.stories = exports.users = void 0;
+exports.users = [
+    {
+        img: "https://randomuser.me/api/portraits/women/1.jpg",
+        name: "John Doe",
+        id: "123456",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/2.jpg",
+        name: "John Smith",
+        id: "654321",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/3.jpg",
+        name: "Jane Doe",
+        id: "987654",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/4.jpg",
+        name: "Alice Johnson",
+        id: "456789",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/5.jpg",
+        name: "Bob Smith",
+        id: "321654",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/6.jpg",
+        name: "Emily Brown",
+        id: "789123",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/7.jpg",
+        name: "David Wilson",
+        id: "456123",
+    },
+    {
+        img: "https://randomuser.me/api/portraits/women/8.jpg",
+        name: "Olivia Davis",
+        id: "987321",
+    },
+];
+exports.stories = [
+    {
+        id: "story1",
+        userId: "123456",
         img: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d",
         viewed: false,
         viewedAt: null,
@@ -12,8 +54,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "A beautiful day!",
-      },
-      {
+    },
+    {
+        id: "story2",
+        userId: "123456",
         img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
         viewed: false,
         viewedAt: null,
@@ -21,24 +65,21 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Exploring new places",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/2.jpg",
-    name: "John Smith",
-    userId: "654321",
-    stories: [
-      {
-        img: "https://images.unsplash.com/photo-1503467576755-9e6aee7b1a1e",
+    },
+    {
+        id: "story3",
+        userId: "654321",
+        img: "https://cdn.pixabay.com/photo/2016/03/30/08/24/peacock-1290248_1280.jpg",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Morning vibes!",
-      },
-      {
+    },
+    {
+        id: "story4",
+        userId: "654321",
         img: "https://images.unsplash.com/photo-1485217988980-11786ced9454",
         viewed: false,
         viewedAt: null,
@@ -46,15 +87,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Sunset by the beach",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/3.jpg",
-    name: "Jane Doe",
-    userId: "987654",
-    stories: [
-      {
+    },
+    {
+        id: "story5",
+        userId: "987654",
         img: "https://images.pexels.com/photos/207962/pexels-photo-207962.jpeg",
         viewed: false,
         viewedAt: null,
@@ -62,8 +98,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "City lights",
-      },
-      {
+    },
+    {
+        id: "story6",
+        userId: "987654",
         img: "https://images.pexels.com/photos/1687830/pexels-photo-1687830.jpeg",
         viewed: false,
         viewedAt: null,
@@ -71,15 +109,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Nature's beauty",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/4.jpg",
-    name: "Alice Johnson",
-    userId: "456789",
-    stories: [
-      {
+    },
+    {
+        id: "story7",
+        userId: "456789",
         img: "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg",
         viewed: false,
         viewedAt: null,
@@ -87,8 +120,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Adventures await",
-      },
-      {
+    },
+    {
+        id: "story8",
+        userId: "456789",
         img: "https://images.pexels.com/photos/1921336/pexels-photo-1921336.jpeg",
         viewed: false,
         viewedAt: null,
@@ -96,15 +131,10 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Chasing dreams",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/5.jpg",
-    name: "Bob Smith",
-    userId: "321654",
-    stories: [
-      {
+    },
+    {
+        id: "story9",
+        userId: "321654",
         img: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
         viewed: false,
         viewedAt: null,
@@ -112,91 +142,82 @@ export const data = [
         mediaType: "image",
         duration: 10,
         caption: "Mountaintop views",
-      },
-      {
-        img: "https://cdn.pixabay.com/photo/2016/11/29/09/32/adventure-1867093_960_720.jpg",
+    },
+    {
+        id: "story10",
+        userId: "321654",
+        img: "https://cdn.pixabay.com/photo/2023/09/28/21/22/highland-cattle-8282564_1280.jpg",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "In the moment",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/6.jpg",
-    name: "Emily Brown",
-    userId: "789123",
-    stories: [
-      {
-        img: "https://cdn.pixabay.com/photo/2015/03/26/09/54/camping-690233_960_720.jpg",
+    },
+    {
+        id: "story11",
+        userId: "789123",
+        img: "https://plus.unsplash.com/premium_photo-1686779700540-9537b63e1a8f",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Hiking adventures",
-      },
-      {
-        img: "https://cdn.pixabay.com/photo/2016/11/21/12/47/book-1845613_960_720.jpg",
+    },
+    {
+        id: "story12",
+        userId: "789123",
+        img: "https://plus.unsplash.com/premium_photo-1701192455496-a095e6e5f792",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Cityscape",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/7.jpg",
-    name: "David Wilson",
-    userId: "456123",
-    stories: [
-      {
-        img: "https://cdn.pixabay.com/photo/2016/02/19/11/19/travel-1208302_960_720.jpg",
+    },
+    {
+        id: "story13",
+        userId: "456123",
+        img: "https://images.unsplash.com/photo-1719937206491-ed673f64be1f",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Forest trails",
-      },
-      {
-        img: "https://cdn.pixabay.com/photo/2015/11/07/11/47/trees-1030967_960_720.jpg",
+    },
+    {
+        id: "story14",
+        userId: "456123",
+        img: "https://images.unsplash.com/photo-1721297014355-bea6467bb1c9",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Golden hour",
-      },
-    ],
-  },
-  {
-    img: "https://randomuser.me/api/portraits/women/8.jpg",
-    name: "Olivia Davis",
-    userId: "987321",
-    stories: [
-      {
-        img: "https://cdn.pixabay.com/photo/2016/06/18/17/42/image-1465348_960_720.jpg",
+    },
+    {
+        id: "story15",
+        userId: "987321",
+        img: "https://images.unsplash.com/photo-1721150641805-23a37065c116",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Mountain escape",
-      },
-      {
-        img: "https://cdn.pixabay.com/photo/2015/07/27/18/13/fox-863801_960_720.jpg",
+    },
+    {
+        id: "story16",
+        userId: "987321",
+        img: "https://plus.unsplash.com/premium_photo-1706800175843-795bc59419e6",
         viewed: false,
         viewedAt: null,
         timestamp: Date.now(),
         mediaType: "image",
         duration: 10,
         caption: "Sunrise moments",
-      },
-    ],
-  },
+    },
 ];
