@@ -1,0 +1,63 @@
+.container {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  border: 1px solid rgb(204, 204, 204);
+  background-color: white;
+  padding: 2rem;
+  width: 98%;
+  margin: 0 auto;
+}
+
+.story-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 5rem;
+  grid-gap: 2rem;
+}
+
+.story-container .content {
+  display: grid;
+  grid-gap: 0.5rem;
+  margin: 0;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease-in;
+}
+
+.story-container .content:hover {
+  transform: scale(1.1);
+}
+.story-container .content .img-container {
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.15) 60%, transparent 60%),
+    radial-gradient(circle, white 65%, transparent 65%),
+    linear-gradient(to top right, orange, deeppink);
+}
+
+.story-container .content .img-container img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: circle(42%);
+}
+
+.story-container .content:last-child ::after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 100%;
+  right: -2rem;
+}
+
+.story-container .content .text-container {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 0.9rem;
+}
